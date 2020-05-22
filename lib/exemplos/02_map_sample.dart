@@ -8,7 +8,12 @@ class MapSample extends StatefulWidget {
 }
 
 class _MapSampleState extends State<MapSample> {
- Completer<GoogleMapController> _controller = Completer();
+ 
+ Completer<GoogleMapController> _mapController = Completer();
+ _onMapCreated(GoogleMapController mapController){
+  _mapController.complete(mapController);
+ }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,9 +27,7 @@ class _MapSampleState extends State<MapSample> {
         target: LatLng(-23.562436, -46.655005),
         zoom: 16,
        ),
-       onMapCreated: (GoogleMapController controller){
-        _controller.complete(controller);
-       },
+       onMapCreated: _onMapCreated,
       ),
      ),
     );

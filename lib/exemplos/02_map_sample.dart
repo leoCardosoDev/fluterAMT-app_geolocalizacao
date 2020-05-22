@@ -23,6 +23,10 @@ class _MapSampleState extends State<MapSample> {
      body: Container(
       child: GoogleMap(
        mapType: MapType.normal,
+       //mapType: MapType.none,
+       //mapType: MapType.satellite,
+       //mapType: MapType.terrain,
+       //mapType: MapType.hybrid,
        initialCameraPosition: CameraPosition(
         target: LatLng(-23.562436, -46.655005),
         zoom: 16,

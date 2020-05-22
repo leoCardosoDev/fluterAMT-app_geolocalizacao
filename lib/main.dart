@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:geolocalizacaoapp/exemplos/02_map_sample.dart';
+import 'package:geolocalizacaoapp/exemplos/06_map_polylines.dart';
+//import 'package:geolocalizacaoapp/exemplos/05_map_polygons.dart';
+//import 'package:geolocalizacaoapp/exemplos/04_map_marcadores.dart';
+//import 'package:geolocalizacaoapp/exemplos/03_map_camera.dart';
+//import 'package:geolocalizacaoapp/exemplos/02_map_sample.dart';
 //import 'package:geolocalizacaoapp/exemplos/01_config_api.dart';
 
 void main() {
@@ -7,7 +11,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: MapSample(),
+      home: MapPolylines(),
     );
   }
 }

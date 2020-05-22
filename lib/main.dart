@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:geolocalizacaoapp/exemplos/06_map_polylines.dart';
+import 'package:geolocalizacaoapp/exemplos/08_map_geocoding.dart';
+//import 'package:geolocalizacaoapp/exemplos/07_map_user_location.dart';
+//import 'package:geolocalizacaoapp/exemplos/06_map_polylines.dart';
 //import 'package:geolocalizacaoapp/exemplos/05_map_polygons.dart';
 //import 'package:geolocalizacaoapp/exemplos/04_map_marcadores.dart';
 //import 'package:geolocalizacaoapp/exemplos/03_map_camera.dart';
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: MapPolylines(),
+      home: MapGeocoding(),
     );
   }
 }

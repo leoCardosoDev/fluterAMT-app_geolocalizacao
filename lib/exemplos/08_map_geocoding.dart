@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
-class MapUserLocation extends StatefulWidget {
+class MapGeocoding extends StatefulWidget {
   @override
-  _MapUserLocationState createState() => _MapUserLocationState();
+  _MapGeocodingState createState() => _MapGeocodingState();
 }
 
-class _MapUserLocationState extends State<MapUserLocation> {
+class _MapGeocodingState extends State<MapGeocoding> {
   Completer<GoogleMapController> _mapController = Completer();
   CameraPosition _cameraPosition = CameraPosition(
     target: LatLng(-23.489838, -46.894934),
@@ -16,8 +16,6 @@ class _MapUserLocationState extends State<MapUserLocation> {
   );
 
   Set<Marker> _markes = {};
-  Set<Polygon> _polygons = {};
-  Set<Polyline> _polylines = {};
 
   _onMapCreated(GoogleMapController mapController) {
     _mapController.complete(mapController);
@@ -70,14 +68,62 @@ class _MapUserLocationState extends State<MapUserLocation> {
       });
     });
   }
+  
+  
+
+  _recoveryAddress() async {
+    List<Placemark> listAddress = await Geolocator().placemarkFromAddress("Rua Bélgica, 129 "
+      "Engenho Novo");
+
+    if (listAddress != null && listAddress.length > 0) {
+      Placemark address = listAddress[0];
+      String result;
+      result = "\n Area:  " + address.administrativeArea;
+      result += "\n Sub area: " + address.subAdministrativeArea;
+      result += "\n Local: " + address.locality;
+      result += "\n Sub Local: " + address.subLocality;
+      result += "\n Via: " + address.thoroughfare;
+      result += "\n Sub Via: " + address.subThoroughfare;
+      result += "\n CEP: " + address.postalCode;
+      result += "\n País: " + address.country;
+      result += "\n Cod. País: " + address.isoCountryCode;
+      result += "\n Lat Long: " + address.position.toString();
+
+      print(result);
+    }
+    
+  }
+
+  //Lat: -23.4864984, Long: -46.892402999999995
+
+  _recoveryAddressLatLon() async {
+   List<Placemark> listAddress = await Geolocator().placemarkFromCoordinates(-23.4864984, -46.892402999999995);
+ 
+   if (listAddress != null && listAddress.length > 0) {
+    Placemark address = listAddress[0];
+    String result;
+    result = "\n Area:  " + address.administrativeArea;
+    result += "\n Sub area: " + address.subAdministrativeArea;
+    result += "\n Local: " + address.locality;
+    result += "\n Sub Local: " + address.subLocality;
+    result += "\n Via: " + address.thoroughfare;
+    result += "\n Sub Via: " + address.subThoroughfare;
+    result += "\n CEP: " + address.postalCode;
+    result += "\n País: " + address.country;
+    result += "\n Cod. País: " + address.isoCountryCode;
+    result += "\n Lat Long: " + address.position.toString();
+  
+    print(result);
+   }
+ 
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _recoveryUserLocation();
-    _addListernerUserLocation();
-    _moveCamera();
+    //_recoveryAddress();
+   _recoveryAddressLatLon();
   }
 
   @override
